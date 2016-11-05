@@ -1,0 +1,46 @@
+.modal-background{
+	background: #222;
+	width: 100vw;
+	height: 100vh;
+	z-index: 200;
+	position: fixed;
+	display: none;
+}
+.modal{
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%,-50%);
+	.modal-header{
+		background: $color2;
+		text-align: right;
+		padding: .5em 0 .5em;
+		span{
+			cursor: pointer;
+		}
+	}
+	.modal-content{
+		
+	}
+}
+.modal-form{
+	background: #eee;
+	padding: 1em;
+	display: block;
+	.form-group{
+		margin: 2.2em 0;
+		.form-input{
+			&:focus + label{
+				top: -70%;
+				left: 0;
+				color: #222;
+			}
+		}
+	}
+}
+.close{
+	padding: .7em .5em .5em;
+	&:hover{
+		background: darken($color2,10);
+	}
+}

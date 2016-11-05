@@ -1,0 +1,105 @@
+@for $i from 1 through 10{
+	.w-#{$i * 10}{
+		width: unquote(#{$i* 10} + '%');
+	}
+	.wp-#{$i * 10}{
+		width: unquote(#{$i * 100}  + 'px');
+	}
+
+}
+
+
+header{
+	.header-content{
+		background: $color1;
+		padding: 1em;
+		span{
+			display: block;
+			text-align: center;
+			color: #fff;
+			font-family: 'century gothic';
+			text-transform: uppercase;
+			letter-spacing: 10px;
+
+		}
+	}
+}
+.container{
+	width: 90%;
+	margin: auto;
+}
+
+.all{
+	width: 100% !important;
+}
+.buttons{
+	flex-direction: row;
+}
+
+.button{
+	padding: .7em .9em;
+	margin: 0 auto;
+	cursor: pointer;
+	transition: all .2s;
+}
+.bg-1, .bg-2{
+	color: #fff;
+
+}
+.bg-1{
+	background: $color1;
+	&:hover{
+		background: darken($color1, 10);
+	}
+	
+}
+.bg-2{
+	background: $color2;
+	&:hover{
+		background: darken($color2, 10);
+	}
+}
+
+.form{
+	display: flex;
+	flex-direction: column;
+	background: #222;
+	padding: 3.5em 2em;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%,-50%);
+	box-shadow: 0 0 20px #222;
+}
+.form-group{
+	display: flex;
+	margin: 1.2em 0;
+	position: relative;
+	label{
+		position: absolute;
+		bottom: .5em;
+		top: .5em;
+		left: 1em;
+		transition: all .2s;
+		width: 100%;
+		font-family: 'lucida sans';
+	}
+	.form-input{
+		padding: .5em;
+		box-shadow: 0 0 2px #222;
+		font-size: inherit;
+		border: none;
+		box-shadow: 0 -2px $color1 inset;
+		transition: all .2s;
+		&:focus{
+			box-shadow: 0 3px $color1 inset;
+		}
+		&:focus + label{
+			top: -70%;
+			left: 0;
+			color: #fff;
+		}
+
+	}
+
+}

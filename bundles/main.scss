@@ -1,0 +1,19 @@
+$color1: #1e90ff;
+$color2: #4169e1;
+*{
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+body{
+	font-family: sans-serif;
+	background:#eee;
+}
+a{
+	color: #222;
+	text-decoration: none;
+}
+
+@import 'ui';
+@import 'especific';
+@import 'modal';
