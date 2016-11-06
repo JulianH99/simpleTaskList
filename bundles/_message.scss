@@ -1,0 +1,27 @@
+.message-container{
+	position: absolute;
+	right: 0;
+	bottom: 1em;
+	max-width: 250px;
+	transition: all .3s;
+	display: none;
+}
+.message{
+	padding: 1.2em;
+	text-align: right;
+	box-shadow: 4px  0 0 #222 inset;
+	.message-title{
+		font-size: 1.2em;
+		font-weight: bold;
+		margin-bottom: 1em;
+	}
+	.message-body{
+		font-family: 'lucida sans', 'calibri', 'ubuntu';
+	}
+}
+.message-show{
+	right: 0;
+}
+.info{
+	background: $color1;
+}

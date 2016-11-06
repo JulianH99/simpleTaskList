@@ -1,8 +1,14 @@
-
 var modal = $('.modal-background');
+
 $('#regshow').on('click', () => {
-	modal.fadeIn();
+	var imgtop = $('.img').offset().top;
+	var imgh = $('.img').outerHeight();
+
+	modal.css('top', (imgtop + imgh) + 'px');
+	//modal.addClass('modal-show');
 });
-$('.close').on('click', function() {
-	modal.fadeOut();
+
+$('.close').on('click', () => {
+	modal.css('top', 100 + '%');
+	//modal.removeClass('modal-show');
 });
