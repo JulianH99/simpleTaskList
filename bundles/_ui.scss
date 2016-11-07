@@ -19,14 +19,21 @@ header{
 
 .form{
 	width: 100%;
-	padding: 1em;
+	padding: 1em 1em 2em;
 	display: flex;
 	flex-direction: column;
+	@media screen and(min-width: 1024px){
+		width: 400px;
+		margin: auto;
+	}
 	.form-group{
 		display: flex;
-		margin:2em 0;
+		margin:1.5em 0;
 		padding: 0;
 		position: relative;
+		@media (width: 414px) and (height: 736px){
+			margin: 2.5em 0;
+		}
 		label{
 			vertical-align: middle;
 		}
@@ -51,6 +58,13 @@ header{
 	background: #222;
 	color: #fff;
 	height: 100vh;
+	@media screen and (min-width: 1024px){
+		height: auto;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%,-50%);
+	}
 	.form-group{
 		.form-input{
 			background: #222;
@@ -59,6 +73,7 @@ header{
 	}
 }
 .modal-form{
+	padding-top: 0;
 	.form-group{
 		.form-input{
 			background: #eee;

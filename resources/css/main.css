@@ -2,7 +2,13 @@
 
 body { font-family: sans-serif; background: #eee; overflow: hidden; font-size: 1.3em; height: 100vh; }
 
+@media (max-width: 320px) { body { font-size: .9em; } }
+
 @media (min-width: 460px) { body { font-size: 1em; } }
+
+@media (width: 768px) { body { font-size: 2.3em; } }
+
+@media (width: 600px) { body { font-size: 1.8em; } }
 
 a { color: #222; text-decoration: none; }
 
@@ -28,9 +34,13 @@ a { color: #222; text-decoration: none; }
 
 header .header-content { width: 100%; padding: .2em; background: #1e90ff; text-align: center; text-transform: uppercase; letter-spacing: 5px; font-family: 'century gothic'; }
 
-.form { width: 100%; padding: 1em; display: -webkit-flex; display: -ms-flexbox; display: flex; -webkit-flex-direction: column; -ms-flex-direction: column; flex-direction: column; }
+.form { width: 100%; padding: 1em 1em 2em; display: -webkit-flex; display: -ms-flexbox; display: flex; -webkit-flex-direction: column; -ms-flex-direction: column; flex-direction: column; }
 
-.form .form-group { display: -webkit-flex; display: -ms-flexbox; display: flex; margin: 2em 0; padding: 0; position: relative; }
+@media screen and (min-width: 1024px) { .form { width: 400px; margin: auto; } }
+
+.form .form-group { display: -webkit-flex; display: -ms-flexbox; display: flex; margin: 1.5em 0; padding: 0; position: relative; }
+
+@media (width: 414px) and (height: 736px) { .form .form-group { margin: 2.5em 0; } }
 
 .form .form-group label { vertical-align: middle; }
 
@@ -40,7 +50,11 @@ header .header-content { width: 100%; padding: .2em; background: #1e90ff; text-a
 
 .login-form { background: #222; color: #fff; height: 100vh; }
 
+@media screen and (min-width: 1024px) { .login-form { height: auto; position: absolute; top: 50%; left: 50%; -webkit-transform: translate(-50%, -50%); -ms-transform: translate(-50%, -50%); transform: translate(-50%, -50%); } }
+
 .login-form .form-group .form-input { background: #222; color: #fff; }
+
+.modal-form { padding-top: 0; }
 
 .modal-form .form-group .form-input { background: #eee; }
 
@@ -60,9 +74,13 @@ img { max-width: 100%; height: auto; margin: auto; }
 
 .bg-2:active, .bg-2:hover { background: #214cce; }
 
-.message-container { position: absolute; right: 0; bottom: 1em; max-width: 250px; transition: all .3s; display: none; }
+.message-container { position: absolute; right: -100%; width: 100%; max-height: 50px; transition: all .3s; }
 
-.message { padding: 1.2em; text-align: right; box-shadow: 4px  0 0 #222 inset; }
+@media screen and (max-width: 1000px) { .message-container { top: 0; } }
+
+@media screen and (min-width: 1024px) { .message-container { max-width: 250px; bottom: 65px; z-index: 100; } }
+
+.message { padding: 1.2em; text-align: right; box-shadow: 4px  0 0 #fff inset; }
 
 .message .message-title { font-size: 1.2em; font-weight: bold; margin-bottom: 1em; }
 
@@ -72,14 +90,24 @@ img { max-width: 100%; height: auto; margin: auto; }
 
 .info { background: #1e90ff; }
 
+.error { background: #EA4335; }
+
 .modal-background { width: 100vw; height: 100vh; position: absolute; top: 100%; transition: all .2s; }
+
+@media screen and (min-width: 1024px) { .modal-background { background: #222; } }
 
 .modal-background .modal { background: #eee; height: 100%; }
 
-.modal-background .modal .modal-header { text-align: right; padding: .9em; }
+@media screen and (min-width: 1024px) { .modal-background .modal { width: 400px; height: auto; margin: auto; } }
+
+.modal-background .modal .modal-header { margin: 0; text-align: right; padding: .9em; }
 
 .modal-background .modal .modal-header .close { padding: .5em; transition: all .3s; cursor: pointer; }
 
+@media screen and (min-width: 1024px) { .modal-background .modal .modal-header .close { position: absolute; right: 1em; top: 1em; color: #fff; width: 38px; height: 37px; text-align: center; } }
+
 .modal-background .modal .modal-header .close:hover { border-radius: 50%; background: #222; color: #4169e1; }
+
+@media screen and (min-width: 1024px) { .modal-background .modal .modal-header .close:hover { background: #fff; color: #1e90ff; } }
 
 .modal-show { top: 0 !important; }

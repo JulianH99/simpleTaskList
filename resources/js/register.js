@@ -1,14 +1,27 @@
-var modal = $('.modal-background');
+$('#regbutton').on('click', function(){
 
-$('#regshow').on('click', () => {
-	var imgtop = $('.img').offset().top;
-	var imgh = $('.img').outerHeight();
+	var r_user = $('#r_user').val();
+	var r_pass = $('#r_pass').val();
 
-	modal.css('top', (imgtop + imgh) + 'px');
-	//modal.addClass('modal-show');
-});
+	if(r_user.length != 0 && r_pass.length != 0){
+		
+		var send ={
+			user : r_user,
+			pass : r_pass
+		};
 
-$('.close').on('click', () => {
-	modal.css('top', 100 + '%');
-	//modal.removeClass('modal-show');
+		$.ajax({
+			type: 'post',
+			data: send,
+			async: true,
+			url: 'core/'
+		});
+	}
+	else{
+		showMessage({
+			title :' Ups!',
+			body: 'Al parecer no has escrito lo necesario',
+			class: 'error'
+		});
+	}
 });

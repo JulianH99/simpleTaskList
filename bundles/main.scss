@@ -1,5 +1,6 @@
 $color1: #1e90ff;
 $color2: #4169e1;
+$color3: #EA4335;
 *{
 	box-sizing: border-box;
 	margin: 0;
@@ -11,8 +12,17 @@ body{
 	overflow: hidden;
 	font-size: 1.3em;
 	height: 100vh;
+	@media (max-width: 320px) {
+		font-size: .9em;
+	}
 	@media (min-width: 460px){
 		font-size: 1em;
+	}
+	@media (width: 768px){
+		font-size: 2.3em;
+	}
+	@media (width: 600px){
+		font-size: 1.8em;
 	}
 }
 a{

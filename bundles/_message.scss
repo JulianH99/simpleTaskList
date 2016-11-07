@@ -1,15 +1,23 @@
 .message-container{
 	position: absolute;
-	right: 0;
-	bottom: 1em;
-	max-width: 250px;
+	right: -100%;
+	width: 100%;
+	max-height: 50px;
+	//max-width: 250px;
 	transition: all .3s;
-	display: none;
+	@media screen and(max-width: 1000px){
+		top: 0;
+	}
+	@media screen and(min-width: 1024px){
+		max-width: 250px;
+		bottom:65px;
+		z-index: 100;
+	}
 }
 .message{
 	padding: 1.2em;
 	text-align: right;
-	box-shadow: 4px  0 0 #222 inset;
+	box-shadow: 4px  0 0 #fff inset;
 	.message-title{
 		font-size: 1.2em;
 		font-weight: bold;
@@ -24,4 +32,7 @@
 }
 .info{
 	background: $color1;
+}
+.error{
+	background: $color3;
 }
