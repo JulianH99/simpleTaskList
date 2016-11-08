@@ -58,15 +58,32 @@
 		</div>
 	</div>
 	<div class="message-container">
-		<div class="message info">
+		<div class="message">
 			<div class="message-title">
-				<span>Bienvenido</span>
+				<span>hola</span>
 			</div>
 			<div class="message-body">
-				<span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod</span>
+				<span></span>
 			</div>
 		</div>
 	</div>
 	<?php include('views/modules/scripts.php') ?>
+	<script type="text/javascript">
+		
+		var modal = $('.modal-background');
+
+		$('#regshow').on('click', () => {
+			var imgtop = $('.img').offset().top;
+			var imgh = $('.img').outerHeight();
+
+			modal.css('top', (imgtop + imgh) + 'px');
+			//modal.addClass('modal-show');
+		});
+
+		$('.close').on('click', () => {
+			modal.css('top', 100 + '%');
+			//modal.removeClass('modal-show');
+		});
+	</script>
 </body>
 </html>

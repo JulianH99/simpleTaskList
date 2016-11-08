@@ -10,3 +10,7 @@ define('DB_PASS', '');
 define('DB_NAME', 'tasklist');
 
 # includes
+
+foreach (['connection','task','tasklist','user'] as $model) {
+	require 'core/models/'.$model.'.model.php';
+}
