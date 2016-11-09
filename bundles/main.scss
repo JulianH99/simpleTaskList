@@ -6,21 +6,29 @@ $color3: #EA4335;
 	margin: 0;
 	padding: 0;
 }
+body.login{
+	overflow: hidden;
+	height: 100vh;
+	@media (width: 768px){
+		font-size: 2.3em;
+	}
+
+}
+
 body{
 	font-family: sans-serif;
 	background:#eee;
-	overflow: hidden;
+	
 	font-size: 1.3em;
-	height: 100vh;
+	
+	
 	@media (max-width: 320px) {
 		font-size: .9em;
 	}
 	@media (min-width: 460px){
 		font-size: 1em;
 	}
-	@media (width: 768px){
-		font-size: 2.3em;
-	}
+	
 	@media (width: 600px){
 		font-size: 1.8em;
 	}
@@ -33,3 +41,4 @@ a{
 @import 'ui';
 @import 'message';
 @import 'modal';
+@import 'tasklist';

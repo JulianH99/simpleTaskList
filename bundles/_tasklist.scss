@@ -1,0 +1,168 @@
+.user-name{
+	background: $color1;
+	color: #fff;
+	cursor: pointer;
+	width: 250px;
+	@media (min-width: 1020px){
+		position: absolute;
+		left: 0;
+		top: 1em;
+	}
+	#user-name{
+		transition: all .2s;
+		list-style-type: none;
+		& > li{
+			font-family: 'century gothic';
+			font-size: 1.1em;
+			padding: 1em;
+			ul{
+				margin: .4em 0;
+				list-style: none;
+				display: none;
+				border-top: 2px solid #fff;
+
+				li{
+					transition: all .2s;
+					line-height: 2;
+					text-transform: lowercase;
+					padding-left: .4em;
+					&:hover{
+						background: darken($color1,10);
+					}
+				}
+			}
+		}
+	}
+}
+body{
+	background: #eee;
+}
+.tasklist{
+	@media (min-width: 720px) {
+		width: 90%;
+		margin: auto;
+		max-width: 800px;
+	}
+	@media (min-width: 1020px){
+		width: 500px;
+		margin: 2em auto;
+		max-width: 1200px;
+	}
+	font-family: 'lucida sans';
+	&-header, &-body{
+		background: #fff
+	}
+	&-header{
+
+		display: flex;
+		flex-direction: column;
+	}
+	&-name{
+		width: 100%;
+		padding: .9em; 
+		display: flex;
+
+		box-shadow: 0 -2px darken(#ccc, 20) inset;
+	}
+	#tasklist-name{
+		margin-right: auto;
+		align-self: center;
+		font-size: 1.5em;
+	}
+	#tasklist-name-edit{
+		font-size: 1.5em;
+		background: #222;
+		color: #fff;
+		text-align: center;
+		padding: 0 .2em;
+		align-self: center;
+		cursor: pointer;
+	}
+	&-add{
+		padding: .4em;
+		&-form{
+			.form-group{
+				margin: 1em 0;
+				input{
+					font-size: 1.1em;
+					width: 70%;
+				}
+				small{
+					color: lighten(#222,10);
+				}
+			}
+		}
+	}
+	#task-add{
+		background: lightgreen;
+		display: inline-block;
+		width: 20%;
+		text-align: center;
+		transition: all .2s;
+		&:hover{
+			background: darken(lightgreen,10);
+		}
+	}
+	&-body{
+		//margin: 2em 0;
+		.task{
+			&-header{
+				display: flex;
+				flex-direction: column;
+				box-shadow: 0 -3px $color1 inset,
+							0 5px $color2 inset;
+				padding: 1em 0;
+				.task-title, .task-info{
+					padding: 0 1em;
+				}
+				.task-title{
+					width: 100%;
+					font-weight: bold;
+					text-transform: uppercase;
+					margin: .3em 0;
+				}
+				.task-info{
+					display: flex;
+					flex-direction: column;
+					span{
+						width: 100%;
+					}
+				}
+			}
+			&-body{
+				width: 100%;
+				padding: 1em .5em;
+				font-size: 1.4em;
+				text-align: center;
+			}
+			&-footer{
+				display: flex;
+				justify-content: flex-end;
+				padding-bottom: 1em;
+				a{
+					align-self: flex-end;
+					margin: 0 .5em;
+				}
+				#erase{
+					background: $color3;
+				}
+				#mark-as-done{
+					background: lightgreen;
+				}
+			}
+		}
+		.task:last-child{
+			.task-footer{
+				box-shadow: 0 -4px $color2 inset;
+			}
+		}
+	}
+}
+
+.done{
+	background: darken(#eee,10);
+	color: #666;
+	a{
+		color: #666;
+	}
+}

@@ -33,7 +33,24 @@
 				return 0;
 			}
 		}
-		function GetTask($_tid, $_user_id){
-			
+		function GetTask($_tid, $_user_id, PDO $_con){
+			$sql = 'call GetTask(:tasklist,:user)';
+
+			$smt = $_con->prepare($sql);
+
+			$smt->bindParam(':tasklist', $_tid);
+			$smt->bindParam(':user',$_user_id);
+
+			if($smt->execute()){
+
+				while($row = $smt->nextRowSet()){
+
+					$tasks[] = $row->fetchAll();
+				}
+			}
+			else{
+				return null;
+			}
+			return $tasks;
 		}
 	}

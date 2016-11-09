@@ -1,12 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-	<title><?php echo APP_NAME ?></title>
-	<link rel="stylesheet" type="text/css" href="resources/css/main.css">
+	<?php require('views/modules/header.php'); ?>
 </head>
-<body>
+<body class="login">
 	<header>
 		<div class="header-content">
 			<span>Simple TaskList &#9776;</span>
@@ -19,7 +16,8 @@
 				src="resources/img/icon.png">
 			</div>
 			<div class="form-group w-100">
-				<label for="user" class="w-30">Usuario</label>				<input type="text" id="user" class="w-70 form-input">
+				<label for="user" class="w-30">Usuario</label>
+				<input type="text" id="user" class="w-70 form-input">
 
 			</div>
 			<div class="form-group">

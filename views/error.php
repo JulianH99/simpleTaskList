@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title><?php echo APP_NAME ?></title>
+	<?php require('views/modules/header.php') ?>
 </head>
 <body>
 	<header>
-		<div class="container">
-			<span>SimpleTS</span>
+		<div class="header-content">
+			<span>Simple TaskList &#9776;</span>
 		</div>
 	</header>
 	<div class="container">
@@ -15,6 +14,10 @@
 		<p class="content">
 			Esta página no existe
 		</p>
+
+		<?php 
+
+		 ?>
 	</div>
 	
 </body>

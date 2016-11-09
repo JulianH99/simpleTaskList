@@ -1,12 +1,14 @@
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
-body { font-family: sans-serif; background: #eee; overflow: hidden; font-size: 1.3em; height: 100vh; }
+body.login { overflow: hidden; height: 100vh; }
+
+@media (width: 768px) { body.login { font-size: 2.3em; } }
+
+body { font-family: sans-serif; background: #eee; font-size: 1.3em; }
 
 @media (max-width: 320px) { body { font-size: .9em; } }
 
 @media (min-width: 460px) { body { font-size: 1em; } }
-
-@media (width: 768px) { body { font-size: 2.3em; } }
 
 @media (width: 600px) { body { font-size: 1.8em; } }
 
@@ -44,9 +46,9 @@ header .header-content { width: 100%; padding: .2em; background: #1e90ff; text-a
 
 .form .form-group label { vertical-align: middle; }
 
-.form .form-group .form-input { font-size: inherit; padding: .2em .4em; box-shadow: 0 -3px #1e90ff inset; border: none; transition: all .2s; }
+.form-input { font-size: inherit; padding: .2em .4em; box-shadow: 0 -3px #1e90ff inset; border: none; transition: all .2s; }
 
-.form .form-group .form-input:focus { padding-bottom: .4em; box-shadow: -3px 0 #1e90ff inset, 3px 0 #1e90ff inset, 0 -3px #1e90ff inset; }
+.form-input:focus { padding-bottom: .4em; box-shadow: -3px 0 #1e90ff inset, 3px 0 #1e90ff inset, 0 -3px #1e90ff inset; }
 
 .login-form { background: #222; color: #fff; height: 100vh; }
 
@@ -92,7 +94,7 @@ img { max-width: 100%; height: auto; margin: auto; }
 
 .error { background: #EA4335; }
 
-.modal-background { width: 100vw; height: 100vh; position: absolute; top: 100%; transition: all .2s; }
+.modal-background { width: 100vw; height: 100vh; position: absolute; top: 110%; transition: all .2s; }
 
 @media screen and (min-width: 1024px) { .modal-background { background: #222; } }
 
@@ -111,3 +113,73 @@ img { max-width: 100%; height: auto; margin: auto; }
 @media screen and (min-width: 1024px) { .modal-background .modal .modal-header .close:hover { background: #fff; color: #1e90ff; } }
 
 .modal-show { top: 0 !important; }
+
+.user-name { background: #1e90ff; color: #fff; cursor: pointer; width: 250px; }
+
+@media (min-width: 1020px) { .user-name { position: absolute; left: 0; top: 1em; } }
+
+.user-name #user-name { transition: all .2s; list-style-type: none; }
+
+.user-name #user-name > li { font-family: 'century gothic'; font-size: 1.1em; padding: 1em; }
+
+.user-name #user-name > li ul { margin: .4em 0; list-style: none; display: none; border-top: 2px solid #fff; }
+
+.user-name #user-name > li ul li { transition: all .2s; line-height: 2; text-transform: lowercase; padding-left: .4em; }
+
+.user-name #user-name > li ul li:hover { background: #0077ea; }
+
+body { background: #eee; }
+
+.tasklist { font-family: 'lucida sans'; }
+
+@media (min-width: 720px) { .tasklist { width: 90%; margin: auto; max-width: 800px; } }
+
+@media (min-width: 1020px) { .tasklist { width: 500px; margin: 2em auto; max-width: 1200px; } }
+
+.tasklist-header, .tasklist-body { background: #fff; }
+
+.tasklist-header { display: -webkit-flex; display: -ms-flexbox; display: flex; -webkit-flex-direction: column; -ms-flex-direction: column; flex-direction: column; }
+
+.tasklist-name { width: 100%; padding: .9em; display: -webkit-flex; display: -ms-flexbox; display: flex; box-shadow: 0 -2px #999999 inset; }
+
+.tasklist #tasklist-name { margin-right: auto; -webkit-align-self: center; -ms-flex-item-align: center; align-self: center; font-size: 1.5em; }
+
+.tasklist #tasklist-name-edit { font-size: 1.5em; background: #222; color: #fff; text-align: center; padding: 0 .2em; -webkit-align-self: center; -ms-flex-item-align: center; align-self: center; cursor: pointer; }
+
+.tasklist-add { padding: .4em; }
+
+.tasklist-add-form .form-group { margin: 1em 0; }
+
+.tasklist-add-form .form-group input { font-size: 1.1em; width: 70%; }
+
+.tasklist-add-form .form-group small { color: #3c3c3c; }
+
+.tasklist #task-add { background: lightgreen; display: inline-block; width: 20%; text-align: center; transition: all .2s; }
+
+.tasklist #task-add:hover { background: #64e764; }
+
+.tasklist-body .task-header { display: -webkit-flex; display: -ms-flexbox; display: flex; -webkit-flex-direction: column; -ms-flex-direction: column; flex-direction: column; box-shadow: 0 -3px #1e90ff inset, 0 5px #4169e1 inset; padding: 1em 0; }
+
+.tasklist-body .task-header .task-title, .tasklist-body .task-header .task-info { padding: 0 1em; }
+
+.tasklist-body .task-header .task-title { width: 100%; font-weight: bold; text-transform: uppercase; margin: .3em 0; }
+
+.tasklist-body .task-header .task-info { display: -webkit-flex; display: -ms-flexbox; display: flex; -webkit-flex-direction: column; -ms-flex-direction: column; flex-direction: column; }
+
+.tasklist-body .task-header .task-info span { width: 100%; }
+
+.tasklist-body .task-body { width: 100%; padding: 1em .5em; font-size: 1.4em; text-align: center; }
+
+.tasklist-body .task-footer { display: -webkit-flex; display: -ms-flexbox; display: flex; -webkit-justify-content: flex-end; -ms-flex-pack: end; justify-content: flex-end; padding-bottom: 1em; }
+
+.tasklist-body .task-footer a { -webkit-align-self: flex-end; -ms-flex-item-align: end; align-self: flex-end; margin: 0 .5em; }
+
+.tasklist-body .task-footer #erase { background: #EA4335; }
+
+.tasklist-body .task-footer #mark-as-done { background: lightgreen; }
+
+.tasklist-body .task:last-child .task-footer { box-shadow: 0 -4px #4169e1 inset; }
+
+.done { background: #d4d4d4; color: #666; }
+
+.done a { color: #666; }

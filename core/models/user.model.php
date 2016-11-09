@@ -26,10 +26,12 @@
 			$smt->bindParam(':pass',$this->pass);
 
 			if($smt->execute()){
-				$exec = 1;
+				$last_id = $this->con->lastInsertId();
+				$this->id = $last_id;
+				return $this->id;
 			}
 			else{
-				$exec = 0;
+				$exec = -1;
 			}
 			$smt = null;
 			return $exec;
@@ -46,6 +48,8 @@
 				$numrows = $smt->rowCount();
 				if($numrows > 0){
 					$userObject = $smt->fetch(PDO::FETCH_OBJ);
+					$this->name = $userObject->user;
+					$this->id = $userObject->user_id;
 				}
 				else{
 					return 0;
@@ -67,6 +71,7 @@
 			if($smt->execute(array(':user' =>  $this->user,
 									':pass' => $this->pass))){
 				$numrows = $smt->rowCount();
+				return $numrows;
 			}
 			else{
 				return -1;

@@ -25,7 +25,9 @@ class TaskList
 		$smt->bindParam(':user', $this->user);
 
 		if($smt->execute()){
-			return $this->con->lastInsertId();
+			$last_id = $this->con->lastInsertId();
+			$this->id = $last_id;
+			return $this->id;
 		}
 		else{
 			return -1;
@@ -68,7 +70,27 @@ class TaskList
 			return -1;
 		}
 		return $taskObject;
+	}
+	function GetTasks(){
 
+		if(isset($this->id) && isset($this->user)){
+			$task = new Task();
+			if($tasks = $task->GetTask($this->id,$this->user,$this->con)){
+
+				$this->tasks = $tasks;
+			}
+			else{
+				return null;
+			}
+
+		}
+		else{
+			return null;
+		}
+	}
+
+	function __destruct(){
+		$this->con = null;
 	}
 
 

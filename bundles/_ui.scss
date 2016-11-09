@@ -37,7 +37,7 @@ header{
 		label{
 			vertical-align: middle;
 		}
-		.form-input{
+		@at-root .form-input{
 			font-size: inherit;
 			padding: .2em .4em;
 			
