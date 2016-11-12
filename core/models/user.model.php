@@ -5,8 +5,8 @@
 	*/
 	class User
 	{
-		private $user;
-		private $pass;
+		public $user;
+		public $pass;
 		private $con;
 		public $id;
 		private $state;
@@ -14,7 +14,7 @@
 		function __construct($_user, $_pass)
 		{
 			$this->user = $_user;
-			$this->pass = password_hash($_pass,PASSWORD_DEFAULT);
+			$this->pass = $_pass;
 			$this->state = 1;
 			$this->con = new Connection();
 
@@ -26,7 +26,7 @@
 
 			$smt = $this->con->prepare($sql);
 			$smt->bindParam(':user',$this->user);
-			$smt->bindParam(':pass',$this->pass);
+			$smt->bindParam(':pass',password_hash($this->pass,PASSWORD_DEFAULT));
 			$smt->bindParam(':state',$this->state);
 
 			if($smt->execute()){
@@ -41,19 +41,21 @@
 			return $exec;
 		}
 		public function Login(){
-			$sql = 'select user_id, user, pass from users where user = :user and pass = :pass limit 1';
+			$sql = 'select user_id, user, pass from users where user = :user limit 1';
 			$smt = $this->con->prepare($sql);
 
-			$params = array(':user' => $this->user,
-							':pass' => $this->pass);
+			$params = array(':user' => $this->user);
 
 			if($smt->execute($params)){
 
 				$numrows = $smt->rowCount();
 				if($numrows > 0){
 					$userObject = $smt->fetch(PDO::FETCH_OBJ);
-					$this->name = $userObject->user;
-					$this->id = $userObject->user_id;
+					if(password_verify($this->pass, $userObject->pass))
+					{
+						$this->id = $userObject->user_id;
+						return $this->id;
+					}
 				}
 				else{
 					return 0;
@@ -63,8 +65,7 @@
 			else{
 				return -1;
 			}
-			return array('id' => $userObject->user_id,
-						  'name' => $userObject->user);
+			
 
 		}
 		public function Exists(){

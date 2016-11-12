@@ -44,8 +44,50 @@ if (isset($_GET['add']) && $_POST) {
 
 		}
 		header('content-type: application/json');
+		unset($user, $tsklist);
 		echo json_encode($result);
 	}
-elseif (isset($_GET['login'])) {
-		# code...
+if (isset($_GET['login']) && $_POST) {
+		$result = array();
+		$curuser = $_POST['user'];
+		$curpass = $_POST['pass'];
+
+		if(!empty($curuser) && !empty($curpass)){
+
+			$user = new User($curuser,$curpass);
+
+			if($user->Exists()){
+				$login = $user->Login();
+				if($login !=  -1 && $login != 0){
+					$tsklist = new TaskList();
+					$tsklist->getTaskListInfo($user->id);
+
+					$_SESSION['tsklist_id'] = $tsklist->id;
+					$_SESSION['user_name'] = $user->user;
+					$_SESSION['user_id'] = $user->id; 
+
+					$result = array(
+						'title' => 'Bienvenido',
+						'body' => 'En seguida verás tu lista de tareas',
+						'class' => 'info',
+						);
+				}
+				else{
+			 		$result = array(
+			 			'title' => '¡Oh no!',
+			 			'body' => 'Los datos que ingresaste no son correctos',
+			 			'class' => 'error'
+			 			);
+				}
+
+			}else{
+				$result = array(
+					'title' =>'¡Hey!',
+					'body'=>'Este usuario no está registrado aún',
+					'class' =>'error'
+					);
+			}
+		}
+		header('content-type: application/json');
+		echo json_encode($result);
 	}	

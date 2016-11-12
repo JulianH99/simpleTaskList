@@ -17,6 +17,7 @@ $('#logbutton').on('click', function(){
 			url:'ajaxRequest.php?controller=login&login=true',
 			success: (result) => {
 				showMessage(result);
+				console.log(result);
 			}
 		});
 	}

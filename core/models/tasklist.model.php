@@ -6,9 +6,9 @@
 class TaskList
 {
 	private $user;
-	private $name;
+	public $name;
 	private $tasks;
-	private $id;
+	public $id;
 	private $con;
 	static $defaultName = 'TaskList';
 	
