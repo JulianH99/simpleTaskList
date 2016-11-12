@@ -10,6 +10,7 @@ class TaskList
 	private $tasks;
 	private $id;
 	private $con;
+	static $defaultName = 'TaskList';
 	
 	function __construct($_user='',$_name='')
 	{

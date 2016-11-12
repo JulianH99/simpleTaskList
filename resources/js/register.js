@@ -13,8 +13,13 @@ $('#regbutton').on('click', function(){
 		$.ajax({
 			type: 'post',
 			data: send,
+			dataType: "json",
 			async: true,
-			url: 'core/'
+			url: 'ajaxRequest.php?controller=login&add=true',
+			success: (result) => {
+				showMessage(result);
+				console.log(result);
+			}
 		});
 	}
 	else{

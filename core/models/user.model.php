@@ -9,21 +9,25 @@
 		private $pass;
 		private $con;
 		public $id;
+		private $state;
 		
 		function __construct($_user, $_pass)
 		{
 			$this->user = $_user;
 			$this->pass = password_hash($_pass,PASSWORD_DEFAULT);
+			$this->state = 1;
 			$this->con = new Connection();
+
 		}
 
 		public function Create(){
 
-			$sql = 'insert into users values(:user,:pass)';
+			$sql = 'insert into users(user,pass,estado) values(:user,:pass,:state)';
 
 			$smt = $this->con->prepare($sql);
 			$smt->bindParam(':user',$this->user);
 			$smt->bindParam(':pass',$this->pass);
+			$smt->bindParam(':state',$this->state);
 
 			if($smt->execute()){
 				$last_id = $this->con->lastInsertId();
@@ -65,13 +69,18 @@
 		}
 		public function Exists(){
 
-			$sql = 'select * from user where user = :user or pass = :pass';
+			$sql = 'select * from users where user = :user or pass = :pass';
 			$smt= $this->con->prepare($sql);
 
 			if($smt->execute(array(':user' =>  $this->user,
 									':pass' => $this->pass))){
 				$numrows = $smt->rowCount();
-				return $numrows;
+				if($numrows > 0){
+					return true;
+				}
+				else{
+					return false;
+				}
 			}
 			else{
 				return -1;

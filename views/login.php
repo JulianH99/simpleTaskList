@@ -45,7 +45,7 @@
 					</div>
 					<div class="form-group w-100">
 						<label for="r_pass" class="w-30">Clave</label>
-						<input type="text" id="r_pass" class="w-70 form-input">
+						<input type="password" id="r_pass" class="w-70 form-input">
 						
 					</div>
 					<div class="form-group w-100">
@@ -80,6 +80,8 @@
 
 		$('.close').on('click', () => {
 			modal.css('top', 100 + '%');
+			$('#r_user').val('');
+			$('#r_pass').val('');
 			//modal.removeClass('modal-show');
 		});
 	</script>

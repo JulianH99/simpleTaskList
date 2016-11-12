@@ -11,6 +11,7 @@ define('DB_NAME', 'tasklist');
 
 # includes
 
-foreach (['connection','task','tasklist','user'] as $model) {
-	require 'core/models/'.$model.'.model.php';
-}
+include('models/connection.model.php');
+include('models/task.model.php');
+include('models/tasklist.model.php');
+include('models/user.model.php');

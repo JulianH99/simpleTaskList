@@ -14,7 +14,7 @@ function showMessage(_messageInfo){
 
 	setTimeout(()=>{
 		messageContainer.css('right', '-100%');
-	}, 2000);
+	}, 2500);
 
 	messageContainer.on('click', function(){
 		$(this).css('right', '-100%');
