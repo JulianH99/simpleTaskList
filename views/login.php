@@ -85,5 +85,6 @@
 			//modal.removeClass('modal-show');
 		});
 	</script>
+
 </body>
 </html>

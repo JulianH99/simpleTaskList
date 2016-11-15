@@ -4,7 +4,9 @@ function showMessage(_messageInfo){
 	var messageTitle = message.find('.message-title');
 	var messageBody = message.find('.message-body');
 
-	message.addClass(_messageInfo.class);
+	message.removeClass('info').
+		removeClass('error').
+		addClass(_messageInfo.class);
 	messageTitle.html(`<span>${_messageInfo.title}</span>`);
 	messageBody.html(`<span>${_messageInfo.body}</span>`);
 

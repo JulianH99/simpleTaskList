@@ -1,5 +1,5 @@
-<?php
-
+<?php 
+session_start();
 if (isset($_GET['add']) && $_POST) {
 		
 		$result = array();
@@ -59,17 +59,13 @@ if (isset($_GET['login']) && $_POST) {
 			if($user->Exists()){
 				$login = $user->Login();
 				if($login !=  -1 && $login != 0){
-					$tsklist = new TaskList();
-					$tsklist->getTaskListInfo($user->id);
-
-					$_SESSION['tsklist_id'] = $tsklist->id;
-					$_SESSION['user_name'] = $user->user;
-					$_SESSION['user_id'] = $user->id; 
-
+					$_SESSION['user_id'] = $user->GetID();
+					$_SESSION['user_name'] = $user->GetName();
 					$result = array(
 						'title' => 'Bienvenido',
 						'body' => 'En seguida verás tu lista de tareas',
 						'class' => 'info',
+						'ahead' => true
 						);
 				}
 				else{

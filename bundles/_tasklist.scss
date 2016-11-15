@@ -2,11 +2,14 @@
 	background: $color1;
 	color: #fff;
 	cursor: pointer;
-	width: 250px;
+	width: 100%;
+	text-align: center;
+	text-transform: uppercase;
 	@media (min-width: 1020px){
 		position: absolute;
 		left: 0;
 		top: 1em;
+		width: 250px;
 	}
 	#user-name{
 		transition: all .2s;
@@ -44,7 +47,7 @@ body{
 		max-width: 800px;
 	}
 	@media (min-width: 1020px){
-		width: 500px;
+		width: 600px;
 		margin: 2em auto;
 		max-width: 1200px;
 	}
@@ -79,13 +82,13 @@ body{
 		cursor: pointer;
 	}
 	&-add{
-		padding: .4em;
+		padding: .9em .4em; 
 		&-form{
 			.form-group{
 				margin: 1em 0;
 				input{
-					font-size: 1.1em;
-					width: 70%;
+					font-size: 1.5em;
+					width: 75%;
 				}
 				small{
 					color: lighten(#222,10);
@@ -96,7 +99,7 @@ body{
 	#task-add{
 		background: lightgreen;
 		display: inline-block;
-		width: 20%;
+		width: 24%;
 		text-align: center;
 		transition: all .2s;
 		&:hover{
@@ -106,12 +109,8 @@ body{
 	&-body{
 		//margin: 2em 0;
 		.task{
+			box-shadow: 0 3px $color1 inset;
 			&-header{
-				display: flex;
-				flex-direction: column;
-				box-shadow: 0 -3px $color1 inset,
-							0 5px $color2 inset;
-				padding: 1em 0;
 				.task-title, .task-info{
 					padding: 0 1em;
 				}
@@ -132,12 +131,14 @@ body{
 			&-body{
 				width: 100%;
 				padding: 1em .5em;
-				font-size: 1.4em;
-				text-align: center;
+				font-size: 1.8em;
+				text-align: left;
+
 			}
 			&-footer{
 				display: flex;
 				justify-content: flex-end;
+				align-items: center;
 				padding-bottom: 1em;
 				a{
 					align-self: flex-end;

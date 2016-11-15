@@ -5,10 +5,10 @@
 	*/
 	class User
 	{
-		public $user;
-		public $pass;
+		private $user;
+		private $pass;
 		private $con;
-		public $id;
+		private $id;
 		private $state;
 		
 		function __construct($_user, $_pass)
@@ -18,6 +18,12 @@
 			$this->state = 1;
 			$this->con = new Connection();
 
+		}
+		public function GetID(){
+			return isset($this->id)?  $this->id : -1;
+		}
+		public function GetName(){
+			return $this->user;
 		}
 
 		public function Create(){
@@ -88,6 +94,8 @@
 			}
 		}
 
+		
+		
 		function __destruct(){
 			$this->con = null;
 		}

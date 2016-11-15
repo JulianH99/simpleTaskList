@@ -18,6 +18,9 @@ $('#logbutton').on('click', function(){
 			success: (result) => {
 				showMessage(result);
 				console.log(result);
+				if(result.ahead == true){
+					window.location ="?view=tasklist";
+				}
 			}
 		});
 	}

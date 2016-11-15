@@ -8,7 +8,7 @@ class TaskList
 	private $user;
 	public $name;
 	private $tasks;
-	public $id;
+	private $id;
 	private $con;
 	static $defaultName = 'TaskList';
 	
@@ -17,6 +17,16 @@ class TaskList
 		$this->user = $_user;
 		$this->name = $_name;
 		$this->con = new Connection();
+	}
+
+	function setId($_id){
+		$this->id = $_id;
+	}
+	function getId(){
+		return isset($this->id)?  $this->id : -1;
+	}
+	function getName(){
+		return $this->name;
 	}
 	function Create(){
 		$sql = 'insert into tasklists(tasklist_name, tasklist_user_id) values(:name,:user)';
@@ -79,6 +89,7 @@ class TaskList
 			if($tasks = $task->GetTask($this->id,$this->user,$this->con)){
 
 				$this->tasks = $tasks;
+				return $this->tasks;
 			}
 			else{
 				return null;
@@ -88,6 +99,22 @@ class TaskList
 		else{
 			return null;
 		}
+	}
+
+	function EmptyList(){
+
+		$sql = 'call EmptyList(:userid)';
+
+		$smt = $this->con->prepare($sql);
+		$smt->bindParam(':userid', $this->id);
+		if($smt->execute()){
+			$result = $smt->fetch(PDO::FETCH_BOTH);
+			return $result[0] == 0? true : false;
+		}
+		else{
+			return -1;
+		}
+
 	}
 
 	function __destruct(){

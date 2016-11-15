@@ -3,9 +3,9 @@
 
 	$ctrl = $_GET['controller'];
 
-	if(file_exists("core/controllers/$ctrl.controller.php")){
+	if(file_exists("core/ajax/$ctrl.ajax.php")){
 
-		require('core/controllers/'.$ctrl.'.controller.php');
+		require('core/ajax/'.$ctrl.'.ajax.php');
 	}
 	else{
 		require('views/error.php');

@@ -11,15 +11,18 @@
 		private $done;
 		private $id;
 
-		function __construct($_title='',$_message='', $_createTime = '', $_done = false, $_id = 0){
+		function __construct($_title='',$_message='', $_createTime = '', $_done = false){
 			$this->title = $_title;
 			$this->message = $_message;
 			$this->createTime = $_createTime;
 			$this->done = $_done;
+		}
+
+		public function setID($_id){
 			$this->id = $_id;
 		}
 		
-		function Delete($_id,$_tlist, PDO $_con){
+		function MarkAsDone($_id,$_tlist, PDO $_con){
 			$sql = 'update tasks set estado = 0 where task_id = :id and tasklist_id = :tid';
 
 			$smt = $_con->prepare($sql);
@@ -34,23 +37,47 @@
 			}
 		}
 		function GetTask($_tid, $_user_id, PDO $_con){
-			$sql = 'call GetTask(:tasklist,:user)';
+			$sql = 'call GetTask(?,?)';
 
 			$smt = $_con->prepare($sql);
 
-			$smt->bindParam(':tasklist', $_tid);
-			$smt->bindParam(':user',$_user_id);
+			$smt->bindParam(1, $_tid, PDO::PARAM_INT);
+			$smt->bindParam(2,$_user_id, PDO::PARAM_INT);
 
-			if($smt->execute()){
+			$tasks = array();
 
-				while($row = $smt->nextRowSet()){
+			$smt->execute();
 
-					$tasks[] = $row->fetchAll();
-				}
-			}
-			else{
-				return null;
+			while($row = $smt->fetch(PDO::FETCH_OBJ)){
+
+				$tasks[] = $row;
+
 			}
 			return $tasks;
+			
+		}
+		public static function MakeTask($_task){
+
+			$state = "";
+			$checked = "";
+			if($_task->estado  == 0){
+				$state = "done";
+				$checked = "checked";
+			}
+
+			return "<div class='task $state'>
+				<div class='task-header'>
+				</div>
+				<div class='task-body'>
+					<span>$_task->task_message</span>
+				</div>
+				<div class='task-footer'>
+
+					<span>$_task->createTime</span>
+					<a class='button erase' id='erase' data-id='$_task->task_id'>&#x2718;</a>
+					<a class='button' id='mark-as-done'><label for='done'>Hecho</label> <input type='checkbox' id='done' $checked></a>
+				</div>
+			</div>";
+
 		}
 	}

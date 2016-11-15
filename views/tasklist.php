@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +10,7 @@
 <body>
 	<div class="user-name">
 		<ul id="user-name">
-			<li id="toggle-user-options">TaskList/Julián &#x25bc;
+			<li id="toggle-user-options">TaskList/<?php echo $user ?> &#x25bc;
 				<ul id="user-options">
 					<li id="erase-all">Borrar todas las tareas</li>
 					<li id="logout">Salir</li>
@@ -17,61 +18,38 @@
 			</li>
 		</ul>
 	</div>
+	<?php 
+
+	?>
 	<div class="tasklist">
 		<div class="tasklist-header">
 			<div class="tasklist-name">
-				<span id="tasklist-name">Lista de tareas</span>
+				<span id="tasklist-name">
+				<?php echo $list->getName(); ?></span>
 				<span id="tasklist-name-edit">&#x270f;</span>
 			</div>
 			<div class="tasklist-add">
 				<form class="tasklist-add-form">
 					<div class="form-group">
-						<input type="text" id="task-title" placeholder="Agrega un título" class="form-input">
-						<small>(opcional)</small>
-					</div>
-					<div class="form-group">
-						<input type="text" id="task-message" placeholder="Escribe tu tarea e.d. Prepara la cena" class="form-input">
+						<input type="text" id="task-message" placeholder="Escribe tu tarea" class="form-input">
 						<a class="button" id="task-add">&#x271a;</a>
 					</div>
 				</form>
 			</div>
 		</div>
 		<div class="tasklist-body">
-			<div class="task done">
-				<div class="task-header">
-					<div class="task-title">
-						<span>Cena</span>
-					</div>
-					<div class="task-info">
-						<span><script>document.write(new Date().toDateString());</script></span>
-						<span>Agregado por: Julián</span>
-					</div>
-				</div>
-				<div class="task-body">
-					<span>Preparar la cena</span>
-				</div>
-				<div class="task-footer">
-					<a class="button" id="erase">&#x2718;</a>
-					<a class="button" id="mark-as-done"><label for="done">Hecho</label> <input type="checkbox" id="done"></a>
-				</div>
+			<?php foreach ($tasks as $task) {
+				echo Task::MakeTask($task);
+			} ?>
+		</div>
+	</div>
+	<div class="message-container">
+		<div class="message">
+			<div class="message-title">
+				<span>hola</span>
 			</div>
-			<div class="task">
-				<div class="task-header">
-					<div class="task-title">
-						<span>Cena</span>
-					</div>
-					<div class="task-info">
-						<span><script>document.write(new Date().toDateString());</script></span>
-						<span>Agregado por: Julián</span>
-					</div>
-				</div>
-				<div class="task-body">
-					<span>Preparar la cena</span>
-				</div>
-				<div class="task-footer">
-					<a class="button" id="erase">&#x2718;</a>
-					<a class="button" id="mark-as-done">Hecho <input type="checkbox" id="done"></a>
-				</div>
+			<div class="message-body">
+				<span></span>
 			</div>
 		</div>
 	</div>
@@ -79,6 +57,16 @@
 	<script type="text/javascript">
 		$('#toggle-user-options').on('click', () => {
 			$('#user-options').slideToggle();
+		});
+
+		$(window).on('keypress', function(e){
+			if(e.keyCode == 13){
+				e.preventDefault();
+				AddNewTask();
+			}
+		});
+		$('#task-add').on('click', () => {
+			AddNewTask();
 		});
 	</script>
 </body>
