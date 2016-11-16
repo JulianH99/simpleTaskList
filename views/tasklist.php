@@ -21,7 +21,7 @@
 	<?php 
 
 	?>
-	<div class="tasklist">
+	<div class="tasklist" data-id="<?php echo $list->getId(); ?>">
 		<div class="tasklist-header">
 			<div class="tasklist-name">
 				<span id="tasklist-name">
@@ -38,9 +38,13 @@
 			</div>
 		</div>
 		<div class="tasklist-body">
-			<?php foreach ($tasks as $task) {
+			<?php 
+			if($tasks != null){
+				foreach ($tasks as $task) {
 				echo Task::MakeTask($task);
-			} ?>
+				}
+			} 
+			?>
 		</div>
 	</div>
 	<div class="message-container">
@@ -56,7 +60,7 @@
 	<?php include 'views/modules/scripts.php' ?>
 	<script type="text/javascript">
 		$('#toggle-user-options').on('click', () => {
-			$('#user-options').slideToggle();
+			$('#user-options').slideToggle(300);
 		});
 
 		$(window).on('keypress', function(e){

@@ -100,8 +100,24 @@ class TaskList
 			return null;
 		}
 	}
+	function GetTaskById($_id){
+		$sql = "call GetSingleTask(?)";
 
-	function EmptyList(){
+		$smt = $this->con->prepare($sql);
+
+		$smt->bindParam(1,$_id,PDO::PARAM_INT);
+
+		if($smt->execute()){
+			return $smt->fetch(PDO::FETCH_OBJ);
+		}
+		else{
+			return -1;
+		}
+
+
+	}
+
+	public function EmptyList(){
 
 		$sql = 'call EmptyList(:userid)';
 
@@ -115,6 +131,22 @@ class TaskList
 			return -1;
 		}
 
+	}
+	public function AddNewTask($_message, $_list_id){
+		$sql = "insert into tasks(task_title, task_message, estado, tasklist_id, task_createTime, estado_f)
+    values ('', :message, 1, :listid, now(), 1 );";
+
+		$smt = $this->con->prepare($sql);
+
+		$smt->bindParam(':message', $_message);
+		$smt->bindParam(':listid', $_list_id);
+
+		if($smt->execute()){
+			return $this->con->lastInsertId();
+		}
+		else{
+			return -1;
+		}
 	}
 
 	function __destruct(){
