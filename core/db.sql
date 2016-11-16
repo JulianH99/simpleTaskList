@@ -20,7 +20,6 @@ create table if not exists tasklists(
 
 create table if not exists tasks(
 	task_id int auto_increment primary key,
-	task_title varchar(30) null,
 	task_message varchar(50) not null,
     task_createTime datetime not null default now(),
 	estado bit default 1,
@@ -36,7 +35,7 @@ create table if not exists tasks(
 delimiter //
 create procedure GetTask(in tlist int, in userid int)
 begin
-	select task_id, task_title, task_message, DATE_FORMAT(task_createTime,'%d %b %Y %h:%i %p') as createTime, ts.estado
+	select task_id, task_message, DATE_FORMAT(task_createTime,'%d %b %Y %h:%i %p') as createTime, ts.estado
     from tasks ts join
     tasklists tl on ts.tasklist_id = tl.tasklist_id
     join users us on tl.tasklist_user_id = us.user_id
@@ -64,12 +63,17 @@ delimiter //
 create procedure GetSingleTask(in id int)
 begin
 	select task_id, 
-    task_title, 
     task_message,
     DATE_FORMAT(task_createTime,'%d %b %Y %h:%i %p') as createTime, 
     estado from tasks
     where task_id = id;
     
+end //
+
+create procedure DeleteTask(in taskid int, in listid int)
+begin
+	update tasks set estado_f = 0 where task_id = taskid 
+    and tasklist_id = listid;
 end //
 
 delimiter ;

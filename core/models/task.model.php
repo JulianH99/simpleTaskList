@@ -5,14 +5,12 @@
 	*/
 	class Task
 	{
-		private $title;
 		private $message;
 		private $createTime;
 		private $done;
 		private $id;
 
 		function __construct($_title='',$_message='', $_createTime = '', $_done = false){
-			$this->title = $_title;
 			$this->message = $_message;
 			$this->createTime = $_createTime;
 			$this->done = $_done;
@@ -74,8 +72,9 @@
 				<div class='task-footer'>
 
 					<span>$_task->createTime</span>
-					<a class='button erase' id='erase' data-id='$_task->task_id'>&#x2718;</a>
-					<a class='button' id='mark-as-done'><input type='checkbox' id='done' $checked></a>
+					<a class='button erase' title='Borrar tarea' id='erase' data-id='$_task->task_id'>&#x2718;</a>
+					<a class='button' id='mark-as-done'><input type='checkbox' id='done'
+					 data-id='$_task->task_id' title='Marcar como hecha' $checked></a>
 				</div>
 			</div>";
 

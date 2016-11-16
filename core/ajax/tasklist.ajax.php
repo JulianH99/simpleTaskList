@@ -19,3 +19,29 @@ if(isset($_GET['add'])){
     }
     echo $result;
 }
+if(isset($_GET['delete'])){
+
+    $task_id = $_POST['id'];
+    $list_id = $_POST['list_id'];
+
+    $list = new TaskList();
+    $list->setId($list_id);
+
+    if($list->DeleteTask($task_id)){
+        $result = array(
+            'title' => 'Hasta nunca...',
+            'body' => '',
+            'class' => 'info'
+            );
+    }
+    else{
+        $result = array(
+            'title' => '¡Oh no!',
+            'body' => '¡Ha ocurrido un error!',
+            'class' => 'error'
+            );
+    }
+    header('content-type: application/json');
+    echo json_encode($result);
+
+}

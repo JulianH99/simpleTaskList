@@ -151,17 +151,19 @@ body{
 				}
 				#erase{
 					background: $color3;
+					font-size: 1.1em;
 				}
 				#mark-as-done{
-					background: lightgreen;
 					display: flex;
 					align-items: center;
+					background: lightgreen;
 					input{
-						margin: .1em;
-						width: 20px;
-						height: 20px;
-
+						margin: 0;
+						width: 24px;
+						height: 24px;
+						
 						vertical-align: middle;
+						
 					}
 				}
 			}
