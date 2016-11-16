@@ -41,9 +41,11 @@ begin
     tasklists tl on ts.tasklist_id = tl.tasklist_id
     join users us on tl.tasklist_user_id = us.user_id
     where ts.tasklist_id = tlist and 
-    tl.tasklist_user_id = userid;
+    tl.tasklist_user_id = userid and
+    ts.estado_f = 1
+    order by task_id desc;
 
-end  //
+end //
 delimiter ;
 
 
@@ -54,6 +56,20 @@ begin
 tasklists tk on tk.tasklist_id = ts.tasklist_id
 join users us on us.user_id = tk.tasklist_user_id
 where us.user_id = userid;
+end //
+
+delimiter ;
+
+delimiter //
+create procedure GetSingleTask(in id int)
+begin
+	select task_id, 
+    task_title, 
+    task_message,
+    DATE_FORMAT(task_createTime,'%d %b %Y %h:%i %p') as createTime, 
+    estado from tasks
+    where task_id = id;
+    
 end //
 
 delimiter ;

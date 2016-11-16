@@ -16,7 +16,9 @@ function AddNewTask(){
 			async: true,
 			url: 'ajaxRequest.php?controller=tasklist&add=true',
 			success: (result) => {
-				$('.tasklist-body').append(result);
+				$('.tasklist-body').prepend(result);
+				console.log(result);
+				GenerateClicks();
 			}
 
 		});
@@ -29,6 +31,14 @@ function AddNewTask(){
 	}
 }
 
-$('.task').on('click','.erase',function() {
-	alert($(this).attr('data-id'));
+function GenerateClicks(){
+
+	$('.task').on('click','.erase',function(e) {
+	e.preventDefault();
+	alert($(this).data('id'));
 });
+}
+
+GenerateClicks();
+
+

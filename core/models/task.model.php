@@ -75,7 +75,7 @@
 
 					<span>$_task->createTime</span>
 					<a class='button erase' id='erase' data-id='$_task->task_id'>&#x2718;</a>
-					<a class='button' id='mark-as-done'><label for='done'>Hecho</label> <input type='checkbox' id='done' $checked></a>
+					<a class='button' id='mark-as-done'><input type='checkbox' id='done' $checked></a>
 				</div>
 			</div>";
 

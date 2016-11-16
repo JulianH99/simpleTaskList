@@ -13,7 +13,7 @@
 			<li id="toggle-user-options">TaskList/<?php echo $user ?> &#x25bc;
 				<ul id="user-options">
 					<li id="erase-all">Borrar todas las tareas</li>
-					<li id="logout">Salir</li>
+					<li id="logout"><a href="views/logout.php">Salir</a></li>
 				</ul>
 			</li>
 		</ul>

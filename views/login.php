@@ -40,12 +40,12 @@
 				<form action="" class="modal-form form wp-40">
 					<div class="form-group w-100">
 						<label for="r_user" class="w-30">Usuario</label>
-						<input type="text" id="r_user" class="w-70 form-input">
+						<input type="text" id="r_user" class="w-70 form-input" tabindex="-1">
 						
 					</div>
 					<div class="form-group w-100">
 						<label for="r_pass" class="w-30">Clave</label>
-						<input type="password" id="r_pass" class="w-70 form-input">
+						<input type="password" id="r_pass" class="w-70 form-input" tabindex="-1">
 						
 					</div>
 					<div class="form-group w-100">

@@ -1,4 +1,8 @@
 .user-name{
+	a{
+		color: #fff;
+		display: block;
+	}
 	background: $color1;
 	color: #fff;
 	cursor: pointer;
@@ -143,12 +147,22 @@ body{
 				a{
 					align-self: flex-end;
 					margin: 0 .5em;
+
 				}
 				#erase{
 					background: $color3;
 				}
 				#mark-as-done{
 					background: lightgreen;
+					display: flex;
+					align-items: center;
+					input{
+						margin: .1em;
+						width: 20px;
+						height: 20px;
+
+						vertical-align: middle;
+					}
 				}
 			}
 		}
