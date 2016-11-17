@@ -11,7 +11,7 @@ if (isset($_GET['add']) && $_POST) {
 
 			 if(!$user->Exists()){
 			 	if($user->Create() != -1){
-			 		$tsklist = new TaskList($user->id, TaskList::$defaultName);
+			 		$tsklist = new TaskList($user->GetID(), TaskList::$defaultName);
 			 		if($tsklist->Create()!= -1){
 			 			$result = array(
 			 				'title' => 'Bienvenido',

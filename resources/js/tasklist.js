@@ -17,7 +17,7 @@ function AddNewTask(){
 			url: 'ajaxRequest.php?controller=tasklist&add=true',
 			success: (result) => {
 				$('.tasklist-body').prepend(result);
-				console.log(result);
+				//console.log(result);
 				GenerateClicks();
 			}
 

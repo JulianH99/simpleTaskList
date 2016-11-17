@@ -30,34 +30,34 @@ a {
   text-decoration: none; }
 
 .w-10 {
-  width: 10 + "%"; }
+  width: 10%; }
 
 .w-20 {
-  width: 20 + "%"; }
+  width: 20%; }
 
 .w-30 {
-  width: 30 + "%"; }
+  width: 30%; }
 
 .w-40 {
-  width: 40 + "%"; }
+  width: 40%; }
 
 .w-50 {
-  width: 50 + "%"; }
+  width: 50%; }
 
 .w-60 {
-  width: 60 + "%"; }
+  width: 60%; }
 
 .w-70 {
-  width: 70 + "%"; }
+  width: 70%; }
 
 .w-80 {
-  width: 80 + "%"; }
+  width: 80%; }
 
 .w-90 {
-  width: 90 + "%"; }
+  width: 90%; }
 
 .w-100 {
-  width: 100 + "%"; }
+  width: 100%; }
 
 header .header-content {
   width: 100%;
@@ -303,7 +303,6 @@ body {
     margin-right: auto;
     -webkit-align-self: center;
         -ms-flex-item-align: center;
-                -ms-grid-row-align: center;
             align-self: center;
     font-size: 1.5em; }
   .tasklist #tasklist-name-edit {
@@ -314,7 +313,6 @@ body {
     padding: 0 .2em;
     -webkit-align-self: center;
         -ms-flex-item-align: center;
-                -ms-grid-row-align: center;
             align-self: center;
     cursor: pointer; }
   .tasklist-add {
@@ -393,7 +391,7 @@ body {
     box-shadow: 0 -4px #4169e1 inset; }
 
 .done {
-  background: #d5d5d5;
+  background: #d4d4d4;
   color: #666; }
   .done a {
     color: #666; }

@@ -18,7 +18,7 @@ $('#regbutton').on('click', function(){
 			url: 'ajaxRequest.php?controller=login&add=true',
 			success: (result) => {
 				showMessage(result);
-				console.log(result);
+				//console.log(result);
 			}
 		});
 	}

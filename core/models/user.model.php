@@ -30,9 +30,10 @@
 
 			$sql = 'insert into users(user,pass,estado) values(:user,:pass,:state)';
 
+			$pass = password_hash($this->pass, PASSWORD_DEFAULT);
 			$smt = $this->con->prepare($sql);
 			$smt->bindParam(':user',$this->user);
-			$smt->bindParam(':pass',password_hash($this->pass,PASSWORD_DEFAULT));
+			$smt->bindParam(':pass', $pass);
 			$smt->bindParam(':state',$this->state);
 
 			if($smt->execute()){
