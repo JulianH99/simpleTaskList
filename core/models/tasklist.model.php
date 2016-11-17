@@ -46,12 +46,12 @@ class TaskList
 
 	}
 
-	function SetName($_id){
+	function SetName($_name){
 		$sql = 'udpate tasklists set tasklist_name = :name where tasklist_id = :id and tasklist_user_id = :user_id';
 		$smt = $this->con->prepare($sql);
 
-		$smt->bindParam(':name', $this->name);
-		$smt->bindParam(':id', $_id);
+		$smt->bindParam(':name', $_name);
+		$smt->bindParam(':id', $this->id);
 		$smt->bindParam(':user_id', $this->user);
 
 		if($smt->execute()){
@@ -163,6 +163,20 @@ class TaskList
 		}
 		
 	}
+	function MarkTask($_id){
+			$sql = 'call ChangeTaskState(:id,:tid)';
+
+			$smt = $this->con->prepare($sql);
+
+			$smt->bindParam(':id', $_id, PDO::PARAM_INT);
+			$smt->bindParam(':tid', $this->id, PDO::PARAM_INT);
+			if($smt->execute()){
+				return 1;
+			}
+			else{
+				return 0;
+			}
+		}
 
 	function __destruct(){
 		$this->con = null;

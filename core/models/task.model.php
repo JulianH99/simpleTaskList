@@ -20,20 +20,6 @@
 			$this->id = $_id;
 		}
 		
-		function MarkAsDone($_id,$_tlist, PDO $_con){
-			$sql = 'update tasks set estado = 0 where task_id = :id and tasklist_id = :tid';
-
-			$smt = $_con->prepare($sql);
-
-
-			if($smt->execute(array(':id' => $_id,
-									':tid' => $_tlist))){
-				return 1;
-			}
-			else{
-				return 0;
-			}
-		}
 		function GetTask($_tid, $_user_id, PDO $_con){
 			$sql = 'call GetTask(?,?)';
 
@@ -63,18 +49,21 @@
 				$checked = "checked";
 			}
 
-			return "<div class='task $state'>
+			return "<div class='task '>
 				<div class='task-header'>
 				</div>
-				<div class='task-body'>
+				<div class='task-body $state'>
 					<span>$_task->task_message</span>
 				</div>
 				<div class='task-footer'>
 
 					<span>$_task->createTime</span>
 					<a class='button erase' title='Borrar tarea' id='erase' data-id='$_task->task_id'>&#x2718;</a>
-					<a class='button' id='mark-as-done'><input type='checkbox' id='done'
-					 data-id='$_task->task_id' title='Marcar como hecha' $checked></a>
+					<a class='button checkbox-container' id='mark-as-done'>
+						<input  type='checkbox' id='c$_task->task_id' data-id='$_task->task_id'  $checked>
+						<label class='mark-done' data-id='$_task->task_id' for='c$_task->task_id' title='Marcar como hecha'></label>
+						
+					</a>
 				</div>
 			</div>";
 

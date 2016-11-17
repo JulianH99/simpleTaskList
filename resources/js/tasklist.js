@@ -54,6 +54,31 @@ function GenerateClicks(){
 			}
 		});
 	});
+
+	$('.task').on('click', '.mark-done', function(e){
+
+		var chk = $(this);
+		var task = chk.parents('.task-footer').siblings('.task-body');
+		var dataid =  chk.data('id');
+		var list_id = $('.tasklist').data('id');
+
+		$.ajax({
+			type:'post',
+			data: {
+				taskid: dataid,
+				listid: list_id
+			},
+			async: true,
+			url: 'ajaxRequest.php?controller=tasklist&mark=true',
+			success: (result) => {
+				console.log(result);
+				chk.parents('.task-footer').siblings('.task-body').toggleClass('done');
+			}
+		});
+
+
+		
+	});
 }
 
 GenerateClicks();

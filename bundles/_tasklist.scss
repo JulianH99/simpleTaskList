@@ -135,7 +135,7 @@ body{
 			&-body{
 				width: 100%;
 				padding: 1em .5em;
-				font-size: 1.8em;
+				font-size: 1.6em;
 				text-align: left;
 
 			}
@@ -153,17 +153,40 @@ body{
 					background: $color3;
 					font-size: 1.1em;
 				}
-				#mark-as-done{
-					display: flex;
-					align-items: center;
-					background: lightgreen;
-					input{
-						margin: 0;
-						width: 24px;
-						height: 24px;
-						
-						vertical-align: middle;
-						
+				.checkbox-container{
+					width: 42px;
+					height: 38px;
+					background: #1dd33f;
+					padding: 2px;
+					position: relative;
+					input[type="checkbox"]{
+						display: none;
+					}
+					input[type="checkbox"] + label
+					{
+						display: block;
+						background: #eee;
+						width: 38px;
+						height: 34px;
+
+						&:before{
+							font-size: 1.6em;
+							content: "\2713";
+							text-align: center;
+							background: #3452c1;
+							opacity: 0.2;
+							width: 42px;
+							height: 38px;
+							top: 0;
+							left: 0;
+							position: absolute;
+							color: #fff;
+						}
+					}
+					input[type="checkbox"]:checked + label{
+						&:before{
+							opacity: 1;
+						}
 					}
 				}
 			}
@@ -177,9 +200,6 @@ body{
 }
 
 .done{
-	background: darken(#eee,10);
-	color: #666;
-	a{
-		color: #666;
-	}
+	opacity: .4;
+	background: #eee;
 }

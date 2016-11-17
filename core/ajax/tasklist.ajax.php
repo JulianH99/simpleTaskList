@@ -45,3 +45,20 @@ if(isset($_GET['delete'])){
     echo json_encode($result);
 
 }
+if (isset($_GET['mark'])) {
+    
+    $taskid = $_POST['taskid'];
+    $listid = $_POST['listid'];
+
+    $list = new TaskList();
+    $list->setId($listid);
+
+    if($list->MarkTask($taskid) != 0){
+        echo 'SUCCESS';
+    }
+    else{
+        echo 'ERRROR';
+    }
+
+
+}
