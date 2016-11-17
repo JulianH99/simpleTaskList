@@ -29,10 +29,9 @@
 				<span id="tasklist-name-edit">&#x270f;</span>
 			</div>
 			<div class="tasklist-add">
-				<form class="tasklist-add-form">
+				<form class="tasklist-add-form" autocomplete="off">
 					<div class="form-group">
 						<input type="text" id="task-message" placeholder="Escribe tu tarea" class="form-input">
-						<a class="button" id="task-add">&#x271a;</a>
 					</div>
 				</form>
 			</div>
@@ -68,9 +67,6 @@
 				e.preventDefault();
 				AddNewTask();
 			}
-		});
-		$('#task-add').on('click', () => {
-			AddNewTask();
 		});
 	</script>
 </body>

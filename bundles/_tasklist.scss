@@ -10,7 +10,7 @@
 	text-align: center;
 	text-transform: uppercase;
 	@media (min-width: 1020px){
-		position: absolute;
+		position: fixed;
 		left: 0;
 		top: 1em;
 		width: 250px;
@@ -55,6 +55,7 @@ body{
 		margin: 2em auto;
 		max-width: 1200px;
 	}
+	box-shadow: 5px 5px 20px #222;
 	font-family: 'lucida sans';
 	&-header, &-body{
 		background: #fff
@@ -92,7 +93,7 @@ body{
 				margin: 1em 0;
 				input{
 					font-size: 1.5em;
-					width: 75%;
+					width: 100%;
 				}
 				small{
 					color: lighten(#222,10);
@@ -189,11 +190,6 @@ body{
 						}
 					}
 				}
-			}
-		}
-		.task:last-child{
-			.task-footer{
-				box-shadow: 0 -4px $color2 inset;
 			}
 		}
 	}

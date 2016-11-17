@@ -244,7 +244,7 @@ img {
     display: block; }
   @media (min-width: 1020px) {
     .user-name {
-      position: absolute;
+      position: fixed;
       left: 0;
       top: 1em;
       width: 250px; } }
@@ -272,6 +272,7 @@ body {
   background: #eee; }
 
 .tasklist {
+  box-shadow: 5px 5px 20px #222;
   font-family: 'lucida sans'; }
   @media (min-width: 720px) {
     .tasklist {
@@ -321,7 +322,7 @@ body {
       margin: 1em 0; }
       .tasklist-add-form .form-group input {
         font-size: 1.5em;
-        width: 75%; }
+        width: 100%; }
       .tasklist-add-form .form-group small {
         color: #3c3c3c; }
   .tasklist #task-add {
@@ -401,8 +402,6 @@ body {
             color: #fff; }
         .tasklist-body .task-footer .checkbox-container input[type="checkbox"]:checked + label:before {
           opacity: 1; }
-  .tasklist-body .task:last-child .task-footer {
-    box-shadow: 0 -4px #4169e1 inset; }
 
 .done {
   opacity: .4;
