@@ -59,6 +59,29 @@ if (isset($_GET['mark'])) {
     else{
         echo 'ERRROR';
     }
+}
+if(isset($_GET['deleteall'])){
+
+    $listid = $_POST['listid'];
+    $tasks = $_POST['ids'];
+    
+    $list = new TaskList();
+    $list->setId($listid);
+    $cont = 0;
+    $ref = count($tasks);
+    foreach ($tasks as $task) {
+        if($list->DeleteTask($task))
+        {
+            $cont++;
+        }
+    }
+    if($cont === $ref){
+        echo "SUCCESS";
+    }
+    else{
+        echo array($count,$ref);
+    }
+
 
 
 }

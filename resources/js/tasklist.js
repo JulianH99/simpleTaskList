@@ -50,7 +50,10 @@ function GenerateClicks(){
 			url: 'ajaxRequest.php?controller=tasklist&delete=true',
 			success: (result) => {
 				showMessage(result);
-				task.slideUp(300);
+				task.slideUp(300,function() {
+					task.remove();
+				});
+
 			}
 		});
 	});
@@ -72,7 +75,7 @@ function GenerateClicks(){
 			url: 'ajaxRequest.php?controller=tasklist&mark=true',
 			success: (result) => {
 				console.log(result);
-				chk.parents('.task-footer').siblings('.task-body').toggleClass('done');
+				task.toggleClass('done');
 			}
 		});
 
@@ -80,6 +83,37 @@ function GenerateClicks(){
 		
 	});
 }
+
+$('#erase-all').on('click', function(){
+	var listid = $('.tasklist').data('id');
+	var tasks = $('.tasklist-body').children('.task');
+	var ids= [];
+	for (var i = tasks.length - 1; i >= 0; i--) {
+		ids.push($(tasks[i]).data('id'));
+	}
+
+	if(tasks != null && ids.length > 0){
+
+		$.ajax({
+			type:'post',
+			data: {
+				ids: ids,
+				listid : listid
+			},
+			async: true,
+			url: 'ajaxRequest.php?controller=tasklist&deleteall=true',
+			success: (result) =>{
+				console.log(result);
+				tasks.map(function(index, elem) {
+					$(elem).slideUp(300, function(){
+						$(elem).remove();
+					});
+				});
+			}
+		});
+	}
+
+});
 
 GenerateClicks();
 

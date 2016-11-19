@@ -49,7 +49,7 @@
 				$checked = "checked";
 			}
 
-			return "<div class='task '>
+			return "<div class='task' data-id='$_task->task_id'>
 				<div class='task-header'>
 				</div>
 				<div class='task-body $state'>
