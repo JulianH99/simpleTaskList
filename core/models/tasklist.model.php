@@ -47,14 +47,11 @@ class TaskList
 	}
 
 	function SetName($_name){
-		$sql = 'udpate tasklists set tasklist_name = :name where tasklist_id = :id and tasklist_user_id = :user_id';
+		$sql = 'update tasklists set tasklist_name = :name where tasklist_id = :id';
 		$smt = $this->con->prepare($sql);
 
-		$smt->bindParam(':name', $_name);
-		$smt->bindParam(':id', $this->id);
-		$smt->bindParam(':user_id', $this->user);
-
-		if($smt->execute()){
+		if($smt->execute(array(':name' => $_name,
+							   ':id' => $this->id ))){
 			return 1;
 		}
 		else{

@@ -81,7 +81,31 @@ if(isset($_GET['deleteall'])){
     else{
         echo array($count,$ref);
     }
+}
 
+if(isset($_GET['changetask'])){
+    $id = $_POST['id'];
+    $message = $_POST['message'];
 
+    $task = new Task();
+    $task->setID($id);
+    $con = new Connection();
+    if($task->ChangeMessage($message, $con)){
+        echo "SUCCESS";
+    }else{
+        echo 0;
+    }
+}
+if(isset($_GET['changelist'])){
 
+    $id = $_POST['id'];
+    $name = $_POST['name'];
+
+    $list = new TaskList();
+    $list->setId($id);
+    if($list->SetName($name)){
+        echo 'SUCCESS';
+    }else{
+        echo $name;
+    }
 }

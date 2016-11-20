@@ -9,7 +9,6 @@
 		private $createTime;
 		private $done;
 		private $id;
-
 		function __construct($_title='',$_message='', $_createTime = '', $_done = false){
 			$this->message = $_message;
 			$this->createTime = $_createTime;
@@ -18,6 +17,22 @@
 
 		public function setID($_id){
 			$this->id = $_id;
+		}
+
+		public function ChangeMessage($_message, PDO $_con){
+
+			$sql = 'call ChangeTaskMessage(?,?)';
+
+			$smt = $_con->prepare($sql);
+			$smt->bindParam(1, $this->id,PDO::PARAM_INT);
+			$smt->bindParam(2, $_message, PDO::PARAM_STR);
+
+			if($smt->execute()){
+				return 1;
+			}else{
+				return 0;
+			}
+
 		}
 		
 		function GetTask($_tid, $_user_id, PDO $_con){

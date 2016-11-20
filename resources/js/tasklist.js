@@ -1,33 +1,35 @@
 function AddNewTask(){
 	var taskinput = $('#task-message').val();
 
-	if(taskinput.length != 0){
-		$('#task-message').val('');
-		var list_id = $('.tasklist').attr('data-id');
-		
-		var send = {
-			message: taskinput,
-			list_id: list_id
-		};
-		$.ajax({
-			type: 'post',
-			data: send,
-			dataType:'html',
-			async: true,
-			url: 'ajaxRequest.php?controller=tasklist&add=true',
-			success: (result) => {
-				$('.tasklist-body').prepend(result);
-				//console.log(result);
-				GenerateClicks();
-			}
+	if($('#task-message').is(':focus')){
+		if(taskinput.length != 0){
+			$('#task-message').val('');
+			var list_id = $('.tasklist').attr('data-id');
+			
+			var send = {
+				message: taskinput,
+				list_id: list_id
+			};
+			$.ajax({
+				type: 'post',
+				data: send,
+				dataType:'html',
+				async: true,
+				url: 'ajaxRequest.php?controller=tasklist&add=true',
+				success: (result) => {
+					$('.tasklist-body').prepend(result);
+					//console.log(result);
+					GenerateClicks();
+				}
 
-		});
-	}else{
-		showMessage({
-			title: '¡Hey!',
-			body: 'No has escrito nada :/',
-			class: 'error'
-		});
+			});
+		}else{
+			showMessage({
+				title: '¡Hey!',
+				body: 'No has escrito nada :/',
+				class: 'error'
+			});
+		}
 	}
 }
 
@@ -78,10 +80,48 @@ function GenerateClicks(){
 				task.toggleClass('done');
 			}
 		});
-
-
 		
 	});
+
+	$('.tasklist').on('dblclick', '.task', function(){
+		var task = $(this);
+		var span = task.children('.task-body').children('span');
+		var message = span.text();
+		var newMessage;
+		var id = task.data('id');
+
+		var txt = $(document.createElement('input'));
+		txt.attr('type', 'text');
+		txt.attr('id', id);
+		txt.addClass('form-input');
+		txt.css('width', '100%');
+		txt.val(message);
+
+		span.html(txt);
+		txt.focus();
+		txt.on('keypress', function(e){
+			if(e.keyCode == 13){
+				newMessage = $(this).val();
+				if(message != newMessage && newMessage != ''){
+					$.ajax({
+						type:'post',
+						data:{
+							id : id,
+							message: newMessage
+						},
+						async: true,
+						url: 'ajaxRequest.php?controller=tasklist&changetask',
+						success: (result) => {
+							console.log(result);
+						}
+					});
+				}
+				span.html(newMessage == ''? message: newMessage);
+
+				
+			}
+		});
+	})
 }
 
 $('#erase-all').on('click', function(){
@@ -105,13 +145,39 @@ $('#erase-all').on('click', function(){
 			success: (result) =>{
 				console.log(result);
 				tasks.map(function(index, elem) {
-					$(elem).slideUp(300, function(){
+					$(elem).slideUp((index + 1) * 100, function(){
 						$(elem).remove();
 					});
 				});
 			}
 		});
 	}
+
+});
+
+$('#tasklist-name-edit').on('click', function(){
+
+	var name = prompt("Ingresa el nombre de la lista");
+	var taskname = $('#tasklist-name');
+	if (name != '' && name != taskname.text()) {
+		var id = $('.tasklist').data('id');
+		$.ajax({
+			type: 'post',
+			data: {
+				id: id,
+				name : name
+			},
+			async: true,
+			url: 'ajaxRequest.php?controller=tasklist&changelist=true',
+			success: (result) => {
+				console.log(result);
+			}
+		});
+
+	}
+	$('#tasklist-name').text(name == '' ? taskname.text():name);
+
+
 
 });
 
