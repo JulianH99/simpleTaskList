@@ -1,3 +1,5 @@
+
+
 function AddNewTask(){
 	var taskinput = $('#task-message').val();
 
@@ -125,7 +127,7 @@ function GenerateClicks(){
 				}
 				span.html(newMessage == ''? message: newMessage);
 			}
-			
+
 		});
 	})
 }
@@ -163,31 +165,38 @@ $('#erase-all').on('click', function(){
 
 $('#tasklist-name-edit').on('click', function(){
 
-	var name = prompt("Ingresa el nombre de la lista",'');
-	var taskname = $('#tasklist-name');
-	if (name != '' && name != null && name != taskname.text()) {
-		var id = $('.tasklist').data('id');
-		$.ajax({
-			type: 'post',
-			data: {
-				id: id,
-				name : name
-			},
-			async: true,
-			url: 'ajaxRequest.php?controller=tasklist&changelist=true',
-			success: (result) => {
-				console.log(result);
+	swal({
+		title :'TaskList',
+		text:'Nombre de tu lista de tareas',
+		type:'input',
+		showCancelButton: true,
+		closeOnConfirm:true
+	}, function (input){
+		if (input !== '' && input !== false){
+			var taskname = $('#tasklist-name');
+			if(input != taskname.text()){
+				var id = $('.tasklist').data('id');
+				$.ajax({
+					type: 'post',
+					data: {
+						id: id,
+						name : input
+					},
+					async: true,
+					url: 'ajaxRequest.php?controller=tasklist&changelist=true',
+					success: (result) => {
+						console.log(result);
+					}
+				});
+				taskname.text(input);
 			}
-		});
-		$('#tasklist-name').text(name);
-
-	}
-	
-
-
+		}
+	});
 
 });
 
+	
+		
 GenerateClicks();
 
 
