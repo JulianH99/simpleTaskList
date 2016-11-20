@@ -12,11 +12,10 @@
 	<div class="container">
 		<form action="" class="form login-form wp-40">
 			<div class="form-group img">
-				<img class="form-img" 
-				src="resources/img/icon.png">
+				<img class="form-img" src="resources/img/icon.png">
 			</div>
 			<div class="form-group w-100">
-				<label for="user" class="w-30">Usuario</label>
+				<label for="user" class="w-30" >Usuario</label>
 				<input type="text" id="user" class="w-70 form-input">
 
 			</div>
@@ -69,19 +68,25 @@
 	<script type="text/javascript">
 		
 		var modal = $('.modal-background');
+		var r_user = $("#r_user");
+		var r_pass = $("#r_pass");
+		$("#user").focus();
 
 		$('#regshow').on('click', () => {
 			var imgtop = $('.img').offset().top;
 			var imgh = $('.img').outerHeight();
 
+			r_user.attr('tabindex', '1');
+			r_pass.attr('tabindex', '2');
 			modal.css('top', (imgtop + imgh) + 'px');
+
 			//modal.addClass('modal-show');
 		});
 
 		$('.close').on('click', () => {
 			modal.css('top', 100 + '%');
-			$('#r_user').val('');
-			$('#r_pass').val('');
+			r_user.val('').attr('tabindex', '-1');
+			r_pass.val('').attr('tabindex', '-1');
 			//modal.removeClass('modal-show');
 		});
 	</script>

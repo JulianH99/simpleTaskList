@@ -83,6 +83,13 @@ function GenerateClicks(){
 		
 	});
 
+	var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+	if (isMobile) {
+  		$('.tasklist').on('doubleTap','.task', function(){
+  			$(this).trigger('dblclick');
+  		});
+	}
+
 	$('.tasklist').on('dblclick', '.task', function(){
 		var task = $(this);
 		var span = task.children('.task-body').children('span');

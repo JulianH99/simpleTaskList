@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,6 +12,7 @@
 			<li id="toggle-user-options">TaskList/<?php echo $user ?> &#x25bc;
 				<ul id="user-options">
 					<li id="erase-all">Borrar todas las tareas</li>
+					<li id="mark-all">Marcar todas como hechas</li>
 					<li id="logout"><a href="views/logout.php">Salir</a></li>
 				</ul>
 			</li>
@@ -49,7 +49,7 @@
 	<div class="message-container">
 		<div class="message">
 			<div class="message-title">
-				<span>hola</span>
+				<span></span>
 			</div>
 			<div class="message-body">
 				<span></span>

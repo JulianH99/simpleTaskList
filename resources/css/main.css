@@ -356,6 +356,9 @@ body {
       padding: 1em .5em;
       font-size: 1.6em;
       text-align: left; }
+      @media (max-width: 460px) {
+        .tasklist-body .task-body {
+          font-size: 1.3em; } }
     .tasklist-body .task-footer {
       display: -webkit-flex;
       display: -ms-flexbox;
@@ -363,10 +366,21 @@ body {
       -webkit-justify-content: flex-end;
           -ms-flex-pack: end;
               justify-content: flex-end;
+      -webkit-flex-wrap: wrap;
+          -ms-flex-wrap: wrap;
+              flex-wrap: wrap;
       -webkit-align-items: center;
           -ms-flex-align: center;
               align-items: center;
       padding-bottom: 1em; }
+      @media (max-width: 460px) {
+        .tasklist-body .task-footer span {
+          width: 100%;
+          text-align: center;
+          margin-bottom: 1em; } }
+      @media (min-width: 460px) {
+        .tasklist-body .task-footer span {
+          margin-right: 1em; } }
       .tasklist-body .task-footer a {
         -webkit-align-self: flex-end;
             -ms-flex-item-align: end;
@@ -375,33 +389,28 @@ body {
       .tasklist-body .task-footer #erase {
         background: #EA4335;
         font-size: 1.1em; }
+        @media (max-width: 1000px) {
+          .tasklist-body .task-footer #erase {
+            margin-left: 0; } }
       .tasklist-body .task-footer .checkbox-container {
-        width: 42px;
-        height: 38px;
-        background: #1dd33f;
-        padding: 2px;
-        position: relative; }
+        padding: 0; }
         .tasklist-body .task-footer .checkbox-container input[type="checkbox"] {
           display: none; }
         .tasklist-body .task-footer .checkbox-container input[type="checkbox"] + label {
           display: block;
           background: #eee;
-          width: 38px;
-          height: 34px; }
-          .tasklist-body .task-footer .checkbox-container input[type="checkbox"] + label:before {
-            font-size: 1.6em;
-            content: "\2713";
-            text-align: center;
-            background: #3452c1;
-            opacity: 0.2;
-            width: 42px;
-            height: 38px;
-            top: 0;
-            left: 0;
-            position: absolute;
-            color: #fff; }
-        .tasklist-body .task-footer .checkbox-container input[type="checkbox"]:checked + label:before {
-          opacity: 1; }
+          width: 100%;
+          height: 100%;
+          text-align: center;
+          padding: .25em .45em;
+          font-size: 1.3em;
+          color: #fff;
+          background: #3452c1;
+          opacity: .5;
+          z-index: 10; }
+        .tasklist-body .task-footer .checkbox-container input[type="checkbox"]:checked + label {
+          opacity: 1;
+          box-shadow: 0 0 5px #222; }
 
 .done {
   opacity: .4;

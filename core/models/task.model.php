@@ -76,7 +76,7 @@
 					<a class='button erase' title='Borrar tarea' id='erase' data-id='$_task->task_id'>&#x2718;</a>
 					<a class='button checkbox-container' id='mark-as-done'>
 						<input  type='checkbox' id='c$_task->task_id' data-id='$_task->task_id'  $checked>
-						<label class='mark-done' data-id='$_task->task_id' for='c$_task->task_id' title='Marcar como hecha'></label>
+						<label class='mark-done' data-id='$_task->task_id' for='c$_task->task_id' title='Marcar como hecha'>&#x2714;</label>
 						
 					</a>
 				</div>
