@@ -54,12 +54,13 @@ function GenerateClicks(){
 			url: 'ajaxRequest.php?controller=tasklist&delete=true',
 			success: (result) => {
 				showMessage(result);
-				task.slideUp(300,function() {
-					task.remove();
-				});
+				
 
 			}
 		});
+		task.slideUp(300,function() {
+					task.remove();
+				});
 	});
 
 	$('.task').on('click', '.mark-done', function(e){
@@ -79,9 +80,10 @@ function GenerateClicks(){
 			url: 'ajaxRequest.php?controller=tasklist&mark=true',
 			success: (result) => {
 				console.log(result);
-				task.toggleClass('done');
+				
 			}
 		});
+		task.toggleClass('done');
 		
 	});
 
@@ -152,12 +154,14 @@ $('#erase-all').on('click', function(){
 			url: 'ajaxRequest.php?controller=tasklist&deleteall=true',
 			success: (result) =>{
 				console.log(result);
-				tasks.map(function(index, elem) {
-					$(elem).slideUp((index + 1) * 100, function(){
-						$(elem).remove();
-					});
-				});
+				
 			}
+		});
+
+		tasks.map(function(index, elem) {
+			$(elem).slideUp((index + 1) * 100, function(){
+				$(elem).remove();
+			});
 		});
 	}
 
