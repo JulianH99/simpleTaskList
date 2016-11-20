@@ -415,3 +415,24 @@ body {
 .done {
   opacity: .4;
   background: #eee; }
+
+.ins {
+  margin: 2em auto;
+  width: 100%;
+  font-size: .9em;
+  color: darkgray;
+  font-style: italic;
+  text-align: center; }
+  @media (min-width: 1000px) {
+    .ins {
+      width: 300px; } }
+
+.task-input {
+  padding: .4em .5em;
+  font-size: 1em;
+  font-style: normal;
+  box-shadow: 0 0 3px #1e90ff;
+  transition: all .2s;
+  border: none; }
+  .task-input:focus {
+    box-shadow: 0 0 6px #1e90ff; }

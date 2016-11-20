@@ -208,3 +208,26 @@ body{
 	opacity: .4;
 	background: #eee;
 }
+
+.ins{
+	margin: 2em auto;
+	width: 100%;
+	@media (min-width: 1000px){
+		width: 300px;
+	}
+	font-size: .9em;
+	color: darkgray;
+	font-style: italic;
+	text-align: center;
+}
+.task-input{
+	padding: .4em .5em;
+	font-size: 1em;
+	font-style: normal;
+	box-shadow: 0 0 3px $color1;
+	transition: all .2s;
+	border: none;
+	&:focus{
+		box-shadow: 0 0 6px $color1;
+	}
+}

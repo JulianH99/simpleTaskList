@@ -100,7 +100,7 @@ function GenerateClicks(){
 		var txt = $(document.createElement('input'));
 		txt.attr('type', 'text');
 		txt.attr('id', id);
-		txt.addClass('form-input');
+		txt.addClass('task-input');
 		txt.css('width', '100%');
 		txt.val(message);
 
@@ -124,9 +124,8 @@ function GenerateClicks(){
 					});
 				}
 				span.html(newMessage == ''? message: newMessage);
-
-				
 			}
+			
 		});
 	})
 }
@@ -164,9 +163,9 @@ $('#erase-all').on('click', function(){
 
 $('#tasklist-name-edit').on('click', function(){
 
-	var name = prompt("Ingresa el nombre de la lista");
+	var name = prompt("Ingresa el nombre de la lista",'');
 	var taskname = $('#tasklist-name');
-	if (name != '' && name != taskname.text()) {
+	if (name != '' && name != null && name != taskname.text()) {
 		var id = $('.tasklist').data('id');
 		$.ajax({
 			type: 'post',
@@ -180,9 +179,10 @@ $('#tasklist-name-edit').on('click', function(){
 				console.log(result);
 			}
 		});
+		$('#tasklist-name').text(name);
 
 	}
-	$('#tasklist-name').text(name == '' ? taskname.text():name);
+	
 
 
 

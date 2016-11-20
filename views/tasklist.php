@@ -31,7 +31,7 @@
 			<div class="tasklist-add">
 				<form class="tasklist-add-form" autocomplete="off">
 					<div class="form-group">
-						<input type="text" id="task-message" placeholder="Escribe tu tarea" class="form-input">
+						<input type="text" id="task-message" placeholder="Escribe tu tarea (presiona enter para agregar)" class="form-input">
 					</div>
 				</form>
 			</div>
@@ -55,6 +55,9 @@
 				<span></span>
 			</div>
 		</div>
+	</div>
+	<div class="ins">
+		<span>Doble click/tap para editar</span>
 	</div>
 	<?php include 'views/modules/scripts.php' ?>
 	<script type="text/javascript">
