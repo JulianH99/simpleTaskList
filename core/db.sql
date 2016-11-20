@@ -76,4 +76,27 @@ begin
     and tasklist_id = listid;
 end //
 
+delimiter //
+create procedure ChangeTaskState(in taskid int, in listid int)
+begin
+	set @state = (Select estado from tasks where task_id = taskid and tasklist_id = listid);
+    
+    if @state = 1 then
+		update tasks set estado = 0 where task_id = taskid and tasklist_id = listid;
+	else 
+		update tasks set estado = 1 where task_id = taskid and tasklist_id = listid;
+	end if;
+end //
+
+delimiter ;
+
+delimiter // 
+create procedure ChangeTaskMessage(in id int, in message varchar(40))
+begin
+	update tasks set task_message = message
+	where task_id = id;
+end //
+
+call ChangeTaskMessage(1, 'hola');
+
 delimiter ;
